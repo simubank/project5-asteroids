@@ -1,27 +1,70 @@
-# TdGenericGroupProject
+# Instructions
+## Running the app locally
+### Install programs
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.3.
+install [git bash][git bash]  
+install [node][node]
 
-## Development server
+install angular-cli:  
+```npm install -g @angular/cli``` 
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+install typings:  
+```npm install -g typings```
 
-## Code scaffolding
+install typescript:  
+```npm install -g typescript``` 
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### Clone Repo
+in git bash (or other terminal):  
+```git clone ```  
+change to Development branch:  
+```git checkout Development```
 
-## Build
+### Install Dependencies
+navigate to td-generic-group-project/ folder  
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+install dependencies:  
+```npm install``` 
 
-## Running unit tests
+### Run the app locally
+run the website:  
+```ng serve```  
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Navigate to http://localhost:4200/.  
+The app will automatically reload if you change any of the source files.  
 
-## Running end-to-end tests
+## Deploying to Firebase
+### Build the project
+```ng build --prod```
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+### Install firebase tools
+```npm install -g firebase-tools```
 
-## Further help
+### Login to Firebase
+```firebase login``` (Try with ```--interactive``` if it doesn't work)
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+### To test the app locally
+```firebase serve```
+Navigate to http://localhost:5000
+
+### Start deployment
+```firebase init```
+* Select the project
+* Use default Database Rules
+* Overwrite it
+* Overwrite package.json
+* Overwrite index.js
+* Install dependencies (once)
+* Choose "dist" folder
+* Choose __yes__ to configure as a single-page app
+* Choose __no__ to not overwrite the index.html
+
+
+### Deploy!
+```firebase deploy```
+
+[git bash]: https://git-scm.com/downloads  
+[node]: https://nodejs.org/en/  
+
+Tutorial for angular cli + angularfire + firebase: https://medium.com/codingthesmartway-com-blog/building-an-angular-5-project-with-bootstrap-4-and-firebase-4504ff7717c1  
+Tutorial for deploying from angular cli to firebase : https://coryrylan.com/blog/deploy-angular-cli-apps-to-firebase
