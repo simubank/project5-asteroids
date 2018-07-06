@@ -16,7 +16,7 @@ install typescript:
 
 ### Clone Repo
 in git bash (or other terminal):  
-```git clone ```  
+```git clone (TBD)```  
 change to Development branch:  
 ```git checkout Development```
 
