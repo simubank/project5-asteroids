@@ -18,7 +18,7 @@ install typescript:
 in git bash (or other terminal):  
 ```git clone git@github.com:simubank/project5-asteroids.git```  
 change to Development branch:  
-```git checkout Development```
+```git checkout development```
 
 ### Install Dependencies
 navigate to td-generic-group-project/ folder  
