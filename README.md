@@ -16,7 +16,7 @@ install typescript:
 
 ### Clone Repo
 in git bash (or other terminal):  
-```git clone (TBD)```  
+```git clone git@github.com:simubank/project5-asteroids.git```  
 change to Development branch:  
 ```git checkout Development```
 
