@@ -28,7 +28,7 @@ install dependencies:
 
 ### Run the app locally
 run the website:  
-```ng serve```  
+```npm start```  
 
 Navigate to http://localhost:4200/.  
 The app will automatically reload if you change any of the source files.  

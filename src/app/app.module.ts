@@ -8,6 +8,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { HttpClientModule } from '@angular/common/http'
 
 
 @NgModule({
@@ -21,6 +22,7 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
         AngularFireModule.initializeApp(environment.firebase),
         AngularFireDatabaseModule,
         AngularFireAuthModule,
+        HttpClientModule
     ],
     providers: [],
     bootstrap: [AppComponent]
