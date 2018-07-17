@@ -1,3 +1,4 @@
+import { ApiService } from './services/api.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AngularFireModule } from 'angularfire2';
@@ -9,6 +10,8 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { HttpClientModule } from '@angular/common/http'
+import { HttpModule } from '../../node_modules/@angular/http';
+// import { Endpoints } from './common/endpoints';
 
 
 @NgModule({
@@ -22,9 +25,12 @@ import { HttpClientModule } from '@angular/common/http'
         AngularFireModule.initializeApp(environment.firebase),
         AngularFireDatabaseModule,
         AngularFireAuthModule,
-        HttpClientModule
+        HttpClientModule,
+        HttpModule
     ],
-    providers: [],
+    providers: [
+        ApiService
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule { }
