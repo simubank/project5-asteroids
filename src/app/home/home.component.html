@@ -1,7 +1,7 @@
 <div class="container">
-    <div *ngFor="let item of testArray | async"  class="row">
+    <div class="row">
         <div class="col-xs-12">
-            {{ item.number }}
+            <button (click)="setCustomer()" type="button" class="btn btn-primary">Set Customer</button>
         </div>
     </div>
     <div class="row">
