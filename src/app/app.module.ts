@@ -11,6 +11,9 @@ import { HomeComponent } from './home/home.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { HttpClientModule } from '@angular/common/http'
 import { HttpModule } from '../../node_modules/@angular/http';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { ControlPanelComponent } from './control-panel/control-panel.component';
+import { RuleManagementPageComponent } from './rule-management-page/rule-management-page.component';
 // import { Endpoints } from './common/endpoints';
 
 
@@ -18,7 +21,10 @@ import { HttpModule } from '../../node_modules/@angular/http';
     declarations: [
         AppComponent,
         HomeComponent,
-        NavBarComponent
+        NavBarComponent,
+        DashboardComponent,
+        ControlPanelComponent,
+        RuleManagementPageComponent
     ],
     imports: [
         BrowserModule,
