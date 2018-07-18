@@ -15,6 +15,7 @@ import { HttpModule } from '../../node_modules/@angular/http';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ControlPanelComponent } from './control-panel/control-panel.component';
 import { RuleManagementPageComponent } from './rule-management-page/rule-management-page.component';
+import { RulePageComponent } from './rule-page/rule-page.component';
 // import { Endpoints } from './common/endpoints';
 
 
@@ -25,7 +26,8 @@ import { RuleManagementPageComponent } from './rule-management-page/rule-managem
         NavBarComponent,
         DashboardComponent,
         ControlPanelComponent,
-        RuleManagementPageComponent
+        RuleManagementPageComponent,
+        RulePageComponent
     ],
     imports: [
         BrowserModule,
