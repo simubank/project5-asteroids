@@ -1,3 +1,4 @@
+import { User } from './../interface/user';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { LoginService } from './../services/login.service';
 import { Component, OnInit } from '@angular/core';
@@ -34,20 +35,20 @@ export class HomeComponent implements OnInit {
     // }
 
     // Should only be used for hardcoding customers to the database
-    // public setCustomer(): void {
-    //     let user: User = {
-    //         id: '5bb31a05-6f70-463d-be17-b96c8a697629_e2ba9727-a181-48f6-a1bc-0abf5ce173a2',
-    //         fullName: 'Ivana Easom',
-    //         age: 38,
-    //         accountId: '5bb31a05-6f70-463d-be17-b96c8a697629_29c00b50-3460-45c5-8d22-ea8ab0fe9d19',
-    //         balance: 16.11,
-    //         transactions: null,
-    //         children: null
-    //     };
+    public setCustomer(): void {
+        let user: User = {
+            id: '5bb31a05-6f70-463d-be17-b96c8a697629_f19107d0-3995-4006-a42d-fc7dced91fcb',
+            fullName: 'Frank Berlinski',
+            age: 34,
+            accountId: '5bb31a05-6f70-463d-be17-b96c8a697629_854847ff-19a6-4a73-b9e9-54ff823c9824',
+            balance: 545.8 ,
+            transactions: null,
+            children: null
+        };
 
-    //     let users = this.db.list<User>('users');
-    //     users.push(user);
-    // }
+        let users = this.db.list<User>('users');
+        users.push(user);
+    }
 
     // public getCustomers() {
     //     this.apiService.get(Endpoints.SIMULANTS())
