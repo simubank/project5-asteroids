@@ -16,6 +16,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { ControlPanelComponent } from './control-panel/control-panel.component';
 import { RuleManagementPageComponent } from './rule-management-page/rule-management-page.component';
 import { RulePageComponent } from './rule-page/rule-page.component';
+import { LoginService } from './services/login.service';
+import { FormsModule } from '@angular/forms';
 // import { Endpoints } from './common/endpoints';
 
 
@@ -36,10 +38,12 @@ import { RulePageComponent } from './rule-page/rule-page.component';
         AngularFireAuthModule,
         HttpClientModule,
         HttpModule,
-        AppRoutingModule
+        AppRoutingModule,
+        FormsModule
     ],
     providers: [
-        ApiService
+        ApiService,
+        LoginService
     ],
     bootstrap: [AppComponent]
 })

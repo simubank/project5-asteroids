@@ -1,10 +1,8 @@
-import { User } from './../interface/user';
-import { Endpoints } from './../common/endpoints';
+import { AngularFireDatabase } from 'angularfire2/database';
+import { LoginService } from './../services/login.service';
 import { Component, OnInit } from '@angular/core';
-import { AngularFireDatabase, AngularFireList, AngularFireObject } from 'angularfire2/database';
-import { Observable } from 'rxjs/Observable';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { ApiService } from '../services/api.service';
+import { Subscription } from '../../../node_modules/rxjs';
+
 
 @Component({
     selector: 'app-home',
@@ -12,21 +10,22 @@ import { ApiService } from '../services/api.service';
     styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-    usersArray: Observable<any[]>;
-    userName: string;
-    public basePath: string = '/users';
-
+    public userName: string;
+    private _usersArray: Subscription;
+    private usersArray: any[];
 
     constructor(private db: AngularFireDatabase,
-        private apiService: ApiService) {
-        this.usersArray = db.list('/users').valueChanges();
+        private loginService: LoginService
+    ) {
+        this._usersArray = this.db.list('/users').valueChanges().subscribe(usersArray => {
+            this.usersArray = usersArray;
+        })
     }
 
     ngOnInit() { }
 
-    // TODO: Set up function that checks if user is in db and logs in, or goes back to home page with 'user not found' message
-    public login(user: string) {
-
+    public loginFunction() {
+        this.loginService.setLogin(this.userName);
     }
 
     // public getTestArray(listPath): Observable<any[]> {

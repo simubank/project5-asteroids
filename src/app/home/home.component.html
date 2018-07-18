@@ -1,14 +1,40 @@
 <div class="container">
-    <h1>Home</h1>
-    <!-- <div class="row">
+    <div class="row">
+        <h1>Welcome to TD Allowance Card</h1>
+    </div>
+    <div class="row">
+        <h2>Please log in using your name</h2>
+    </div>
+    <!-- TODO: implement login based on first name -->
+    <div class="row">
+        <form (ngSubmit)="loginFunction()" #loginForm="ngForm">
+            <div class="form-group">
+                <label for="userName">Login</label>
+                <input [(ngModel)]="userName" type="text" class="form-control" id="userName" name="userName" required>
+            </div>
+            <button type="submit" class="btn btn-success" [disabled]="!loginForm.form.valid">Log In</button>
+        </form>
+    </div>
+    <div class="row">
+        The user names (They are secret!):
+    </div>
+    <div *ngFor="let user of usersArray" class="row">
+        {{ user.fullName }}
+    </div>
+</div>
+<!--
+<div *ngFor="let user of usersArray | async">
+    {{ user.accountId }}
+</div> -->
+
+
+<!-- <div class="row">
         <div class="col-xs-12">
             <button (click)="setCustomer()" type="button" class="btn btn-primary">Set Customer</button>
         </div>
     </div> -->
-    <!-- <div class="row">
+<!-- <div class="row">
         <div class="col-xs-12">
             <button (click)="getCustomers()" type="button" class="btn btn-primary">Click me</button>
         </div>
-    </div> -->
-     <!-- TODO: implement login based on first name -->
-</div>
+</div> -->
