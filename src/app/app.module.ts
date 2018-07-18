@@ -1,3 +1,4 @@
+import { AppRoutingModule } from './app.routing.module';
 import { ApiService } from './services/api.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -32,7 +33,8 @@ import { RuleManagementPageComponent } from './rule-management-page/rule-managem
         AngularFireDatabaseModule,
         AngularFireAuthModule,
         HttpClientModule,
-        HttpModule
+        HttpModule,
+        AppRoutingModule
     ],
     providers: [
         ApiService

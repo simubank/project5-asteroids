@@ -15,13 +15,14 @@ export class HomeComponent implements OnInit {
     usersArray: Observable<any[]>;
     userName: string;
     public basePath: string = '/users';
-    public users: AngularFireList<User[]>;
+    // public users: AngularFireList<User[]>;
+
     // public user: AngularFireObject<User> = null;
 
 
     constructor(private db: AngularFireDatabase,
         private apiService: ApiService) {
-            this.users = db.list('/users');
+            // this.users = db.list('/users');
         }
 
     ngOnInit() {
@@ -38,16 +39,17 @@ export class HomeComponent implements OnInit {
 
     public setCustomer(): void {
         let user: User = {
-            id: '5bb31a05-6f70-463d-be17-b96c8a697629_6c8434d3-9d00-45d9-83d6-5c87cc97cdd8',
-            fullName: 'Galen Nevius',
-            age: 49,
-            accountId: '5bb31a05-6f70-463d-be17-b96c8a697629_27ccd2e1-adc7-4902-8cd0-b4baa8558480',
-            balance: 709.39,
+            id: '5bb31a05-6f70-463d-be17-b96c8a697629_e2ba9727-a181-48f6-a1bc-0abf5ce173a2',
+            fullName: 'Ivana Easom',
+            age: 38,
+            accountId: '5bb31a05-6f70-463d-be17-b96c8a697629_29c00b50-3460-45c5-8d22-ea8ab0fe9d19',
+            balance: 16.11,
             transactions: null,
             children: null
         };
 
-        this.users.push(user);
+        let users = this.db.list<User>('users');
+        users.push(user);
     }
 
     public getCustomers() {
