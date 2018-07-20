@@ -23,12 +23,13 @@ export class UserService {
             age: user.age,
             accountId: user.accountId,
             balance: user.balance,
-            transactions: user.transactions,
-            children: user.children
+            transactions: user.transactions
+            // children: user.children
         });
     }
 
     addTransaction(user: User, transaction: Transaction) {
-        this.userList[user.$key].push(transaction);
+       let transactionList = this.db.list('/users/' + user.$key +  '/transactions');
+       transactionList.push(transaction);
     }
 }

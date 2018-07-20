@@ -44,7 +44,9 @@ export class DashboardComponent implements OnInit {
             this.userList.forEach(user => {
                 if (user.fullName === this.login) {
                     this.user = { ...user };
-                    this.transactionList = Object.keys(this.user.transactions);
+                    if (this.user.transactions !== undefined) {
+                        this.transactionList = Object.keys(this.user.transactions);
+                    }
                 }
             });
         });
