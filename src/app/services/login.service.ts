@@ -1,4 +1,5 @@
-import { User } from './../interface/user';
+import { TransactionsService } from './transactions.service';
+import { User } from './../class/user';
 import { Observable } from 'rxjs/Observable';
 import { AngularFireDatabase, AngularFireObject, AngularFireList } from 'angularfire2/database';
 import { Injectable } from '@angular/core';
@@ -14,7 +15,6 @@ export class LoginService {
 
     constructor(private db: AngularFireDatabase) {
         this._login.next(null);
-        // this._usersArray = this.db.list('/users').valueChanges();
         this._usersArray = this.db.list('/users').valueChanges().subscribe(usersArray => {
             this.usersArray = usersArray;
         })
@@ -29,8 +29,6 @@ export class LoginService {
         this.usersArray.forEach(user => {
             if (login === user.fullName) {
                 this._login.next(login);
-                console.log('Login:');
-                console.log(this._login);
                 return true;
             }
         });

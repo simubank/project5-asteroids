@@ -1,3 +1,5 @@
+import { UserService } from './services/user.service';
+import { TransactionsService } from './services/transactions.service';
 import { AppRoutingModule } from './app.routing.module';
 import { ApiService } from './services/api.service';
 import { BrowserModule } from '@angular/platform-browser';
@@ -18,6 +20,8 @@ import { RuleManagementPageComponent } from './rule-management-page/rule-managem
 import { RulePageComponent } from './rule-page/rule-page.component';
 import { LoginService } from './services/login.service';
 import { FormsModule } from '@angular/forms';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // import { Endpoints } from './common/endpoints';
 
 
@@ -39,11 +43,15 @@ import { FormsModule } from '@angular/forms';
         HttpClientModule,
         HttpModule,
         AppRoutingModule,
-        FormsModule
+        FormsModule,
+        BrowserAnimationsModule,
+        ToastrModule.forRoot()
     ],
     providers: [
         ApiService,
-        LoginService
+        LoginService,
+        TransactionsService,
+        UserService
     ],
     bootstrap: [AppComponent]
 })

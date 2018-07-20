@@ -1,8 +1,55 @@
-<p>
-  dashboard works!
-</p>
+<div *ngIf="user !== undefined" class="container">
+
 <!-- TODO: Create dashboard based on TBD Design -->
-<!-- TODO: Create buttons for purchases, with set value and/or random value -->
-<!-- TODO: Display user name -->
-<!-- TODO: Display user balance -->
-<!-- TODO: Display user transactions -->
+
+    <div class="row">
+        <div class="col">
+            {{ user.fullName }}
+        </div>
+        <div class="col">
+            ${{ user.balance }}
+        </div>
+        <div class="col">
+            <button (click)="makePurchase()" type="button" class="btn btn-warning">Purchase</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            type
+        </div>
+        <div class="col">
+            description
+        </div>
+        <div class="col">
+            amount
+        </div>
+        <div class="col">
+            merchant
+        </div>
+        <div class="col">
+            Approved
+        </div>
+    </div>
+    <ng-container *ngIf="transactionList !== undefined ">
+        <div *ngFor="let key of transactionList" class="row">
+            <div class="col">
+                {{ user.transactions[key].type }}
+            </div>
+            <div class="col">
+                {{ user.transactions[key].description }}
+            </div>
+            <div class="col">
+                {{ user.transactions[key].amount }}
+            </div>
+            <div class="col">
+                {{ user.transactions[key].merchant }}
+            </div>
+            <div class="col">
+                Approved
+            </div>
+        </div>
+    </ng-container>
+</div>
+
+
+

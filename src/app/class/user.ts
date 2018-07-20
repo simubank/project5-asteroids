@@ -1,5 +1,6 @@
 import { Transaction } from './transaction';
-export interface User {
+export class User {
+    $key: string;
     id: string;
     fullName: string;
     age: number;

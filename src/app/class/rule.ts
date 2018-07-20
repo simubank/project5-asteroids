@@ -1,4 +1,4 @@
-export interface Rule {
+export class Rule {
     id: string;
     category: string;
     allowed: boolean;
