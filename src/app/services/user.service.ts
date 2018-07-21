@@ -68,6 +68,7 @@ export class UserService {
         rulesList.push(rule);
     }
 
+    // TODO: Create delete rule service, usind method .remove
     deleteRule(user: User, rule: Rule) {
 
     }
