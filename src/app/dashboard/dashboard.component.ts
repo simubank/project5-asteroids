@@ -1,12 +1,7 @@
 import { User } from './../class/user';
-import { Observable } from 'rxjs/Observable';
-
 import { Component, OnInit } from '@angular/core';
-import { TransactionsService } from '../services/transactions.service';
 import { Subscription } from '../../../node_modules/rxjs';
-import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 import { LoginService } from '../services/login.service';
-import { Subject } from 'rxjs/Subject';
 import { UserService } from '../services/user.service';
 import { ToastrService } from 'ngx-toastr';
 import { Transaction } from '../class/transaction';
@@ -22,9 +17,9 @@ export class DashboardComponent implements OnInit {
     public login: string;
     public user: User;
     public transactionList: any[];
+    public rulesList: any[];
 
-    constructor(private transactionsService: TransactionsService,
-        private userService: UserService,
+constructor(private userService: UserService,
         private loginService: LoginService,
         private toastr: ToastrService) {
     }
@@ -47,23 +42,33 @@ export class DashboardComponent implements OnInit {
                     if (this.user.transactions !== undefined) {
                         this.transactionList = Object.keys(this.user.transactions);
                     }
+                    if (this.user.rules !== undefined) {
+                        this.rulesList = this.user.rules;
+                    }
                 }
             });
         });
-        setTimeout(() => this.toastr.success("Great Success"));
     }
 
 
 
     // TODO: function that attempts to make a purchase from a selected vendor with a defined amount
-    public makePurchase() {
+    public makePurchase(description: string, amount: number, merchant: string, category: string) {
         let transaction: Transaction = {
-            type: 'purchase',
-            description: 'coffee',
-            amount: 100,
-            merchant: 'Tims',
+            description: description,
+            amount: amount,
+            merchant: merchant,
             date: new Date(),
-            postBalance: 1000
+            postBalance: 1000,
+            approved: null,
+            category: category
+        }
+        if (this.userService.checkTransaction(this.rulesList, transaction)) {
+            transaction.approved = true;
+            setTimeout(() => this.toastr.success("Transaction Succesfull"));
+        } else {
+            transaction.approved = false;
+            setTimeout(() => this.toastr.error("Transaction Denied"));
         }
         this.userService.addTransaction(this.user, transaction);
     }

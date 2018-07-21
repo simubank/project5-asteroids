@@ -1,6 +1,6 @@
 <div *ngIf="user !== undefined" class="container">
 
-<!-- TODO: Create dashboard based on TBD Design -->
+    <!-- TODO: Create dashboard based on TBD Design -->
 
     <div class="row">
         <div class="col">
@@ -9,9 +9,29 @@
         <div class="col">
             ${{ user.balance }}
         </div>
+    </div>
+    <div class="row">
         <div class="col">
-            <button (click)="makePurchase()" type="button" class="btn btn-warning">Purchase</button>
+            <div class="col">
+                <button (click)="makePurchase('coffee', 10, 'Tims', 'food')" type="button" class="btn btn-danger">$10 Coffee</button>
+            </div>
         </div>
+        <div class="col">
+            <div class="col">
+                <button (click)="makePurchase('pants', 100, 'Guess', 'clothes')" type="button" class="btn btn-primary">$100 Pants</button>
+            </div>
+        </div>
+        <div class="col">
+            <div class="col">
+                <button (click)="makePurchase('train ticket', 20, 'Presto', 'transportation')" type="button" class="btn btn-secondary">$20 Train Ticket</button>
+            </div>
+        </div>
+        <div class="col">
+            <div class="col">
+                <button (click)="makePurchase('movie ticket', 30, 'Cinemax', 'entertainement')" type="button" class="btn btn-warning">$30 Movie Ticket</button>
+            </div>
+        </div>
+
     </div>
     <div class="row">
         <div class="col">
@@ -27,13 +47,13 @@
             merchant
         </div>
         <div class="col">
-            Approved
+            approved?
         </div>
     </div>
     <ng-container *ngIf="transactionList !== undefined ">
         <div *ngFor="let key of transactionList" class="row">
             <div class="col">
-                {{ user.transactions[key].type }}
+                {{ user.transactions[key].category }}
             </div>
             <div class="col">
                 {{ user.transactions[key].description }}
@@ -45,11 +65,8 @@
                 {{ user.transactions[key].merchant }}
             </div>
             <div class="col">
-                Approved
+                {{ user.transactions[key].approved ? 'Approved' : 'Denied' }}
             </div>
         </div>
     </ng-container>
 </div>
-
-
-

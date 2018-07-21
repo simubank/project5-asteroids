@@ -1,5 +1,5 @@
 export class Rule {
-    id: string;
+    $key: string;
     category: string;
     allowed: boolean;
     limit: number;

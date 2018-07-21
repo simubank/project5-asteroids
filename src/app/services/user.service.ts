@@ -2,11 +2,13 @@ import { Transaction } from './../class/transaction';
 import { User } from './../class/user';
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 import { Injectable } from '@angular/core';
+import { Rule } from '../class/rule';
 
 @Injectable()
 export class UserService {
     userList: AngularFireList<any>;
-    selectedUser: User = new User();
+
+
 
     constructor(private db: AngularFireDatabase) {
         this.userList = this.db.list('/users');
@@ -29,7 +31,44 @@ export class UserService {
     }
 
     addTransaction(user: User, transaction: Transaction) {
-       let transactionList = this.db.list('/users/' + user.$key +  '/transactions');
-       transactionList.push(transaction);
+        let transactionList = this.db.list('/users/' + user.$key + '/transactions');
+        transactionList.push(transaction);
+        // let rulesList = this.db.list('/users/' + user.$key + '/rules');
+        // rulesList.push({
+        //     category: 'globalLimit',
+        //     allowed: true,
+        //     limit: 1000,
+        //     resetDate: new Date(),
+        //     resetValue: new Date()
+        // });
+    }
+
+    checkTransaction(rulesList: Rule[], transaction: Transaction) {
+        let approved = true;
+        if (rulesList !== undefined) {
+            Object.keys(rulesList).forEach(function(key) {
+                if (rulesList[key].category === transaction.category || rulesList[key].category === 'globalLimit') {
+                    if (rulesList[key].allowed) {
+                        if (rulesList[key].limit < transaction.amount) {
+                            approved = false;
+                        }
+                    } else {
+                        approved = false;
+                    }
+                }
+            });
+        }
+
+
+        return approved;
+    }
+
+    addRule(user: User, rule: Rule) {
+        let rulesList = this.db.list('/users/' + user.$key + '/rules');
+        rulesList.push(rule);
+    }
+
+    deleteRule(user: User, rule: Rule) {
+
     }
 }
