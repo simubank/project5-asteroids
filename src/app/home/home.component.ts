@@ -38,20 +38,11 @@ export class HomeComponent implements OnInit {
         });
 
         // this.usersArray.push({
-        //     id: '5bb31a05-6f70-463d-be17-b96c8a697629_6c8434d3-9d00-45d9-83d6-5c87cc97cdd8',
-        //     fullName: 'Galen Nevius',
-        //     age: 49,
-        //     accountId: '5bb31a05-6f70-463d-be17-b96c8a697629_27ccd2e1-adc7-4902-8cd0-b4baa8558480',
-        //     balance: 709.39,
-        //     transactions: [{
-        //         type: 'purchase',
-        //         description: 'coffee',
-        //         amount: 100,
-        //         merchant: 'Tims',
-        //         date: new Date(),
-        //         postBalance: 1000
-        //     }],
-        //     children: []
+        //     id: '5bb31a05-6f70-463d-be17-b96c8a697629_98cbf49e-d46b-49a4-aa1b-c01fe3da3e0e',
+        //     fullName: 'Rudi Gjebero',
+        //     age: 44,
+        //     accountId: '5bb31a05-6f70-463d-be17-b96c8a697629_c1308d8f-3e80-4616-91ee-b79d155a2b25',
+        //     balance: 570.71
         // });
     }
 

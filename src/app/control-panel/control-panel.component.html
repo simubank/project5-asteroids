@@ -14,9 +14,6 @@
             <h4>Balance: ${{ user.balance }}</h4>
         </div>
         <div class="col">
-            <h4>Global Limit: ${{ user.balance }}</h4>
-        </div>
-        <div class="col">
             <input type="number" [(ngModel)]="newBalance">
         </div>
         <div class="col">
@@ -38,18 +35,18 @@
         </div>
     </div>
     <hr>
-    <ng-container *ngIf="rulesList !== undefined">
+    <ng-container *ngIf="rulesList !== undefined && rulesList.length > 0">
         <div *ngFor="let key of rulesList" class="row">
-            <div class="col-4">
+            <div class="col-md-4">
                 {{ user.rules[key].category }}
             </div>
-            <div class="col-4">
+            <div class="col-md-4">
                 {{ user.rules[key].allowed ? 'Yes' : 'No'}}
             </div>
-            <div *ngIf="user.rules[key].allowed" class="col-3">
+            <div *ngIf="user.rules[key].allowed" class="col-md-3">
                 {{ user.rules[key].limit }}
             </div>
-            <div class="col-1">
+            <div [class]="user.rules[key].allowed ? 'col-md-1' : 'col-md-1 offset-md-3'">
                 <i (click)="deleteRule(key)" class="fa clickable fa-trash-o"></i>
             </div>
         </div>
