@@ -48,6 +48,8 @@ export class UserService {
         // TODO: Implement -1 limit logic for no limits
         let approved = true;
         let newCategoryLimit: number;
+        let ruleKey: string;
+        let rule: Rule;
         if (rulesList !== undefined) {
             Object.keys(rulesList).forEach(function(key) {
                 if (rulesList[key].category === transaction.category) {
@@ -55,9 +57,11 @@ export class UserService {
                         if (rulesList[key].limit < transaction.amount || user.balance < transaction.amount) {
                             approved = false;
                         }
-                        // else {
-                        //     rulesList[key].limit = rulesList[key].limit - transaction.amount;
-                        // }
+                        else {
+                            newCategoryLimit = rulesList[key].limit - transaction.amount;
+                            ruleKey = key;
+                            rule = rulesList[key];
+                        }
                     } else {
                         approved = false;
                     }
@@ -66,6 +70,7 @@ export class UserService {
         }
         if (approved) {
             this.updateBalance(user, transaction.amount);
+            this.updateCategoryLimit(user, rule, ruleKey, newCategoryLimit);
         }
 
         return approved;
@@ -93,5 +98,13 @@ export class UserService {
         this.userList.update(user.$key, {
             balance: newBalance,
         })
+    }
+
+    updateCategoryLimit(user: User, rule: Rule, $key: string, newLimit: number) {
+        this.userList.update(user.$key + '/rules/' + $key, {
+            limit: newLimit,
+            category: rule.category,
+            allowed: rule.allowed
+        });
     }
 }
