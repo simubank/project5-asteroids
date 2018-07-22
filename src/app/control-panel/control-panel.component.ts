@@ -1,3 +1,4 @@
+import { Rule } from './../class/rule';
 import { ToastrService } from 'ngx-toastr';
 import { UserService } from './../services/user.service';
 import { User } from './../class/user';
@@ -28,6 +29,10 @@ export class ControlPanelComponent implements OnInit {
     public user: User;
     public transactionList: any[];
     public rulesList: any[];
+
+    public newRuleAllowed: string;
+    public newRuleCategory: string;
+    public newRuleLimit: number = null;
 
     constructor(private db: AngularFireDatabase,
         private loginService: LoginService,
@@ -69,6 +74,25 @@ export class ControlPanelComponent implements OnInit {
         this.userService.setBalance(this.user, limit);
         this.newBalance = null;
         setTimeout(() => this.toastr.success("Limit Updated"));
+    }
+
+    createRule() {
+        let newRule = new Rule();
+        newRule.allowed = (this.newRuleAllowed === 'true' ? true : false);
+        newRule.category = this.newRuleCategory;
+        if (this.newRuleLimit === null) {
+            newRule.limit = 10000;
+        } else {
+            newRule.limit = this.newRuleLimit;
+        }
+        this.userService.addRule(this.user, newRule);
+        this.newRuleAllowed = null;
+        this.newRuleCategory = null;
+        this.newRuleLimit = null;
+    }
+
+    deleteRule(key: string) {
+        this.userService.deleteRule(this.user, key);
     }
     // TODO: Read user info
     // TODO: Add Rule function

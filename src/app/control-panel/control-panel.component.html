@@ -46,12 +46,54 @@
             <div class="col-4">
                 {{ user.rules[key].allowed ? 'Yes' : 'No'}}
             </div>
-            <div *ngIf="user.rules[key].allowed" class="col-4">
+            <div *ngIf="user.rules[key].allowed" class="col-3">
                 {{ user.rules[key].limit }}
+            </div>
+            <div class="col-1">
+                <i (click)="deleteRule(key)" class="fa clickable fa-trash-o"></i>
             </div>
         </div>
     </ng-container>
+    <div class="row">
+        <div class="col">
+            <h4>New Rule</h4>
+        </div>
+    </div>
+    <form (ngSubmit)="createRule()" #newRuleForm="ngForm">
+        <div class="row">
+            <div class="col">
+                <label for="newRuleCategory">Category</label>
+                <select name="newRuleCategory" id="newRuleCategory" [(ngModel)]="newRuleCategory" required>
+                    <option value="select" disabled selected hidden></option>
+                    <option value="food">Food</option>
+                    <option value="entertainement">Entertainement</option>
+                    <option value="transportation">Transportation</option>
+                    <option value="clothes">Clothes</option>
+                </select>
+            </div>
+            <div class="col">
+                <label for="newRuleAllowed">Allowed?</label>
+                <select name="newRuleAllowed" id="newRuleAllowed" [(ngModel)]="newRuleAllowed" required>
+                    <option value="select" disabled selected hidden></option>
+                    <option value="true">Yes</option>
+                    <option value="false">No</option>
+                </select>
+            </div>
+            <div *ngIf="newRuleAllowed === 'true'" class="col">
+                <label for="newRuleLimit">Limit</label>
+                <input type="number" name="newRuleLimit" [(ngModel)]="newRuleLimit">
+            </div>
+            <div class="col">
+                <button type="submit" class="btn btn-success" [disabled]="!newRuleForm.form.valid">Create Rule</button>
+            </div>
+        </div>
+    </form>
     <hr>
+    <div class="row">
+        <div class="col">
+            <h2>Transactions</h2>
+        </div>
+    </div>
     <div class="row">
         <div class="col">
             <h4>type</h4>

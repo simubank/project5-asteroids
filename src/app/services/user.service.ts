@@ -81,12 +81,11 @@ export class UserService {
         rulesList.push(rule);
     }
 
-    // TODO: Create delete rule service, using method .remove
-    deleteRule(user: User, rule: Rule) {
-
+    deleteRule(user: User, key: string) {
+        let rulePath = this.db.list('/users/' + user.$key + '/rules');
+        rulePath.remove(key);
     }
 
-    // TODO: Change Global Limit
     setBalance (user: User, balance: number) {
         this.userList.update(user.$key, {
             balance: balance
