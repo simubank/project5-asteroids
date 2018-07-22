@@ -19,7 +19,7 @@ export class NavBarComponent implements OnInit {
         this._login = this.loginService.getLogin().subscribe(login => {
             this.login = login;
             if (login !== null) {
-                this.router.navigate(['dashboard']);
+                this.router.navigate(['control-panel']);
             } else {
                 this.router.navigate(['']);
             }

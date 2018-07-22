@@ -1,7 +1,95 @@
-<p>
-  control-panel works!
-</p>
+<!-- TODO: Move all this to rule management page and do this instead: -->
 <!-- TODO: Display all user's children -->
 <!-- TODO: add 'log off' button -->
 <!-- TODO: add 'register child' form -->
 <!-- TODO: add 'remove child' form -->
+
+
+<div *ngIf="user !== undefined" class="container">
+    <div class="row">
+        <div class="col">
+            <h4>Name: {{ user.fullName }}</h4>
+        </div>
+        <div class="col">
+            <h4>Balance: ${{ user.balance }}</h4>
+        </div>
+        <div class="col">
+            <h4>Global Limit: ${{ user.balance }}</h4>
+        </div>
+        <div class="col">
+            <input type="number" [(ngModel)]="newBalance">
+        </div>
+        <div class="col">
+            <button (click)="setBalance(newBalance)" type="button" class="btn btn-success">Set Limit</button>
+        </div>
+    </div>
+    <div class="row">
+        <h2>Rules List:</h2>
+    </div>
+    <div class="row">
+        <div class="col">
+            Category
+        </div>
+        <div class="col">
+            Allowed?
+        </div>
+        <div class="col">
+            Limit
+        </div>
+    </div>
+    <hr>
+    <ng-container *ngIf="rulesList !== undefined">
+        <div *ngFor="let key of rulesList" class="row">
+            <div class="col-4">
+                {{ user.rules[key].category }}
+            </div>
+            <div class="col-4">
+                {{ user.rules[key].allowed ? 'Yes' : 'No'}}
+            </div>
+            <div *ngIf="user.rules[key].allowed" class="col-4">
+                {{ user.rules[key].limit }}
+            </div>
+        </div>
+    </ng-container>
+    <hr>
+    <div class="row">
+        <div class="col">
+            <h4>type</h4>
+        </div>
+        <div class="col">
+            <h4>description</h4>
+        </div>
+        <div class="col">
+            <h4>amount</h4>
+        </div>
+        <div class="col">
+            <h4>merchant</h4>
+        </div>
+        <div class="col">
+            <h4>approved?</h4>
+        </div>
+    </div>
+    <ng-container *ngIf="transactionList !== undefined">
+        <div *ngFor="let key of transactionList" class="row">
+            <div class="col">
+                {{ user.transactions[key].category }}
+            </div>
+            <div class="col">
+                {{ user.transactions[key].description }}
+            </div>
+            <div class="col">
+                {{ user.transactions[key].amount }}
+            </div>
+            <div class="col">
+                {{ user.transactions[key].merchant }}
+            </div>
+            <div class="col">
+                {{ user.transactions[key].approved ? 'Yes' : 'No' }}
+            </div>
+        </div>
+    </ng-container>
+</div>
+<!-- TODO: Display latest transactions for child -->
+<!-- TODO: Display current maximum allowance -->
+<!-- TODO: Display current rules (with option to delete and edit) -->
+<!-- TODO: Display button for adding new rule -->

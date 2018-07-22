@@ -50,7 +50,7 @@
             approved?
         </div>
     </div>
-    <ng-container *ngIf="transactionList !== undefined ">
+    <ng-container *ngIf="transactionList !== undefined">
         <div *ngFor="let key of transactionList" class="row">
             <div class="col">
                 {{ user.transactions[key].category }}

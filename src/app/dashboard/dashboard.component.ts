@@ -28,14 +28,14 @@ constructor(private userService: UserService,
         var firebaseList = this.userService.getUsers();
         this._login = this.loginService.getLogin().subscribe(login => {
             this.login = login;
-        })
+        });
         firebaseList.snapshotChanges().subscribe(user => {
             this.userList = [];
             user.forEach(element => {
                 var newUser = element.payload.toJSON();
                 newUser["$key"] = element.key;
                 this.userList.push(newUser as User);
-            })
+            });
             this.userList.forEach(user => {
                 if (user.fullName === this.login) {
                     this.user = { ...user };
@@ -63,7 +63,7 @@ constructor(private userService: UserService,
             approved: null,
             category: category
         }
-        if (this.userService.checkTransaction(this.rulesList, transaction)) {
+        if (this.userService.checkTransaction(this.user, this.rulesList, transaction)) {
             transaction.approved = true;
             setTimeout(() => this.toastr.success("Transaction Succesfull"));
         } else {

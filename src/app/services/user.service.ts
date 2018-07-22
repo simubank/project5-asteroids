@@ -35,7 +35,7 @@ export class UserService {
         transactionList.push(transaction);
         // let rulesList = this.db.list('/users/' + user.$key + '/rules');
         // rulesList.push({
-        //     category: 'globalLimit',
+        //     category: 'coffee',
         //     allowed: true,
         //     limit: 1000,
         //     resetDate: new Date(),
@@ -43,22 +43,30 @@ export class UserService {
         // });
     }
 
-    checkTransaction(rulesList: Rule[], transaction: Transaction) {
+    checkTransaction(user: User, rulesList: Rule[], transaction: Transaction) {
+        // TODO: Implement logic that decreases the limit of the selected category and global limit
+        // TODO: Implement -1 limit logic for no limits
         let approved = true;
+        let newCategoryLimit: number;
         if (rulesList !== undefined) {
             Object.keys(rulesList).forEach(function(key) {
-                if (rulesList[key].category === transaction.category || rulesList[key].category === 'globalLimit') {
+                if (rulesList[key].category === transaction.category) {
                     if (rulesList[key].allowed) {
-                        if (rulesList[key].limit < transaction.amount) {
+                        if (rulesList[key].limit < transaction.amount || user.balance < transaction.amount) {
                             approved = false;
                         }
+                        // else {
+                        //     rulesList[key].limit = rulesList[key].limit - transaction.amount;
+                        // }
                     } else {
                         approved = false;
                     }
                 }
             });
         }
-
+        if (approved) {
+            this.updateBalance(user, transaction.amount);
+        }
 
         return approved;
     }
@@ -68,8 +76,22 @@ export class UserService {
         rulesList.push(rule);
     }
 
-    // TODO: Create delete rule service, usind method .remove
+    // TODO: Create delete rule service, using method .remove
     deleteRule(user: User, rule: Rule) {
 
+    }
+
+    // TODO: Change Global Limit
+    setBalance (user: User, balance: number) {
+        this.userList.update(user.$key, {
+            balance: balance
+        })
+    }
+
+    updateBalance (user: User, value: number) {
+        let newBalance = user.balance - value;
+        this.userList.update(user.$key, {
+            balance: newBalance,
+        })
     }
 }
