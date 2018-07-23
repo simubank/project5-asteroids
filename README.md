@@ -49,11 +49,9 @@ Navigate to http://localhost:5000
 
 ### Start deployment
 ```firebase init```
+* Select __yes__ to proceed
+* Select Hosting only
 * Select the project
-* Use default Database Rules
-* Overwrite it
-* Overwrite package.json
-* Overwrite index.js
 * Install dependencies (once)
 * Choose "dist" folder
 * Choose __yes__ to configure as a single-page app
@@ -62,6 +60,8 @@ Navigate to http://localhost:5000
 
 ### Deploy!
 ```firebase deploy```
+
+connect to ``` https://td-generic-group-project.firebaseapp.com```
 
 [git bash]: https://git-scm.com/downloads  
 [node]: https://nodejs.org/en/  
