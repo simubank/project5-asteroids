@@ -50,11 +50,16 @@ export class UserService {
         let newCategoryLimit: number;
         let ruleKey: string;
         let rule: Rule;
+        let categorized: boolean = false;
         if (rulesList !== undefined) {
             Object.keys(rulesList).forEach(function(key) {
+                if (user.balance < transaction.amount) {
+                    approved = false;
+                }
                 if (rulesList[key].category === transaction.category) {
+                    categorized = true;
                     if (rulesList[key].allowed) {
-                        if (rulesList[key].limit < transaction.amount || user.balance < transaction.amount) {
+                        if (rulesList[key].limit < transaction.amount) {
                             approved = false;
                         }
                         else {
@@ -70,7 +75,9 @@ export class UserService {
         }
         if (approved) {
             this.updateBalance(user, transaction.amount);
-            this.updateCategoryLimit(user, rule, ruleKey, newCategoryLimit);
+            if (categorized) {
+                this.updateCategoryLimit(user, rule, ruleKey, newCategoryLimit);
+            }
         }
 
         return approved;
