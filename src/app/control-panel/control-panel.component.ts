@@ -63,7 +63,7 @@ export class ControlPanelComponent implements OnInit {
                         this.transactionList = Object.keys(this.user.transactions);
                     }
                     if (this.user.rules !== undefined) {
-                        this.rulesList =  Object.keys(this.user.rules);
+                        this.rulesList = Object.keys(this.user.rules);
                     }
                 }
             });
@@ -94,11 +94,29 @@ export class ControlPanelComponent implements OnInit {
     deleteRule(key: string) {
         this.userService.deleteRule(this.user, key);
     }
+
+    getBgColor(category: string) {
+        switch (category) {
+            case 'food':
+                return 'orange';
+            case 'transportation':
+                return 'blue';
+            case 'clothes':
+                return 'pink';
+            case 'entertainment':
+                return 'purple';
+            case 'groceries':
+                return 'yellow';
+            case 'withdrawal':
+                return 'green';
+            default:
+                return 'white';
+        }
+    }
     // TODO: Read user info
     // TODO: Add Rule function
     // TODO: Edit Rule function
     // TODO: Delete Rule function
     // TODO: Change overall allowance limit function
-
 
 }

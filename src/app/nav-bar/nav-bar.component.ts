@@ -11,7 +11,7 @@ import { Subscription } from '../../../node_modules/rxjs';
 export class NavBarComponent implements OnInit {
     public _login: Subscription;
     public login: string;
-
+    public hideNavbar: boolean = true;
     constructor(private router: Router,
         private loginService: LoginService) { }
 
@@ -19,11 +19,13 @@ export class NavBarComponent implements OnInit {
         this._login = this.loginService.getLogin().subscribe(login => {
             this.login = login;
             if (login !== null) {
-                this.router.navigate(['dashboard']);
+                this.router.navigate(['control-panel']);
+                this.hideNavbar = false;
             } else {
                 this.router.navigate(['']);
             }
         })
+
     }
 
     public goTo(route: string) {
@@ -32,5 +34,6 @@ export class NavBarComponent implements OnInit {
 
     public logout() {
         this.loginService.logOut();
+        this.hideNavbar = true;
     }
 }

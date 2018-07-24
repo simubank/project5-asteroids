@@ -22,6 +22,7 @@ import { LoginService } from './services/login.service';
 import { FormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { InvertPipe } from './pipe/invert.pipe';
 // import { Endpoints } from './common/endpoints';
 
 
@@ -33,7 +34,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
         DashboardComponent,
         ControlPanelComponent,
         RuleManagementPageComponent,
-        RulePageComponent
+        RulePageComponent,
+        InvertPipe
     ],
     imports: [
         BrowserModule,

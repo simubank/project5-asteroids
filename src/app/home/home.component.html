@@ -1,29 +1,36 @@
 <div class="container">
     <div class="row">
-        <h1>Welcome to TD Allowance Card</h1>
+        <div class="col text-center">
+            <h3>TD Allowance Card</h3>
+        </div>
     </div>
     <div class="row">
-        <h2>Please log in using your name</h2>
+        <div class="col text-center">
+            Please log in using your name
+        </div>
     </div>
     <div class="row">
-        <form (ngSubmit)="loginFunction()" #loginForm="ngForm">
-            <div class="form-group">
-                <label for="userName">Login</label>
-                <input [(ngModel)]="userName" type="text" class="form-control" id="userName" name="userName" required>
+        <form class="form" (ngSubmit)="loginFunction()" #loginForm="ngForm">
+            <div class="col">
+                <div class="form-group">
+                    <label for="userName">Login</label>
+                    <input [(ngModel)]="userName" type="text" class="form-control" id="userName" name="userName" required>
+                </div>
             </div>
-            <button type="submit" class="btn btn-success" [disabled]="!loginForm.form.valid">Log In</button>
+            <div class="col text-center">
+                <button type="submit" class="btn btn-success" [disabled]="!loginForm.form.valid">Log In</button>
+            </div>
         </form>
     </div>
-    <div class="row">
+    <!-- <div class="row">
         The user names (They are secret!):
     </div>
     <div *ngFor="let user of userList" class="row">
         {{ user.fullName }}
-    </div>
+    </div> -->
     <!-- <div class="row">
         <div class="col-xs-12">
             <button (click)="setCustomer()" type="button" class="btn btn-primary">Set Customer</button>
         </div>
     </div> -->
 </div>
-

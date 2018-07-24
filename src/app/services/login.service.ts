@@ -26,12 +26,14 @@ export class LoginService {
 
     public setLogin(login: string): boolean {
         // TODO: Maybe switch to username instead of fullname
-        this.usersArray.forEach(user => {
-            if (login === user.fullName) {
-                this._login.next(login);
-                return true;
-            }
-        });
+        if (this.usersArray !== undefined) {
+            this.usersArray.forEach(user => {
+                if (login === user.fullName) {
+                    this._login.next(login);
+                    return true;
+                }
+            });
+        }
         return false;
 
     }

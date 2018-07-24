@@ -1,19 +1,26 @@
 <div *ngIf="user !== undefined" class="container">
-
-    <!-- TODO: Create dashboard based on TBD Design -->
-
     <div class="row">
         <div class="col">
             {{ user.fullName }}
         </div>
         <div class="col">
-            ${{ user.balance }}
+            ${{ user.balance | number: '1.2-2' }}
         </div>
     </div>
     <div class="row">
         <div class="col">
             <div class="col">
-                <button (click)="makePurchase('coffee', 10, 'Tims', 'food')" type="button" class="btn btn-danger">$10 Coffee</button>
+                <button (click)="makePurchase('coffee', 5, 'Tims', 'food')" type="button" class="btn btn-danger">$10 Coffee</button>
+            </div>
+        </div>
+        <div class="col">
+            <div class="col">
+                <button (click)="makePurchase('food', 50, 'Walmart', 'groceries')" type="button" class="btn btn-danger">walmart</button>
+            </div>
+        </div>
+        <div class="col">
+            <div class="col">
+                <button (click)="makePurchase('ATM', 25, 'TD ATM', 'withdrawal')" type="button" class="btn btn-danger">atm</button>
             </div>
         </div>
         <div class="col">
@@ -28,7 +35,7 @@
         </div>
         <div class="col">
             <div class="col">
-                <button (click)="makePurchase('movie ticket', 30, 'Cinemax', 'entertainement')" type="button" class="btn btn-warning">$30 Movie Ticket</button>
+                <button (click)="makePurchase('movie ticket', 25, 'Cinemax', 'entertainment')" type="button" class="btn btn-warning">$30 Movie Ticket</button>
             </div>
         </div>
 
@@ -51,7 +58,7 @@
         </div>
     </div>
     <ng-container *ngIf="transactionList !== undefined">
-        <div *ngFor="let key of transactionList" class="row">
+        <div *ngFor="let key of transactionList | invert" class="row">
             <div class="col">
                 {{ user.transactions[key].category }}
             </div>

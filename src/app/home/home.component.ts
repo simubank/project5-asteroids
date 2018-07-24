@@ -37,6 +37,9 @@ export class HomeComponent implements OnInit {
             this.login = login;
         });
 
+        // TODO: Temporary for testing only
+        this.userName = 'Galen Nevius';
+
         // this.usersArray.push({
         //     id: '5bb31a05-6f70-463d-be17-b96c8a697629_98cbf49e-d46b-49a4-aa1b-c01fe3da3e0e',
         //     fullName: 'Rudi Gjebero',

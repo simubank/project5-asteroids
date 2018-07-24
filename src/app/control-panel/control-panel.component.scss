@@ -1,3 +1,74 @@
+@import "../../styles.scss";
+
 .clickable  {
     cursor: pointer;
 }
+
+.rule-item {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 10px;
+    margin: 2px 6px;
+}
+
+.flex-rule {
+    padding: 5px;
+}
+
+.flex-cat {
+    width: 110px;
+}
+
+.flex-allow {
+    width: 105px;
+}
+
+.last-item {
+    margin-left: auto;
+}
+
+.new-rule {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+}
+
+.transaction {
+    display: flex;
+    width: 100%;
+    margin: 2px 6px;
+    flex-wrap: wrap;
+    border-radius: 10px;
+    border: 1px solid;
+}
+
+.flex-transaction {
+    padding-right: 5px;
+    padding-left: 5px;
+}
+
+.flex-amount {
+    width: 40px;
+}
+
+.flex-merchant {
+    width: 100px;
+    margin-left: 10px;
+}
+
+.flex-approved {
+    margin-left: auto;
+    width: 30px;
+}
+
+.fa-check {
+    color: $td-light-green;
+}
+
+.fa-times {
+    color: $red;
+}
+
+
