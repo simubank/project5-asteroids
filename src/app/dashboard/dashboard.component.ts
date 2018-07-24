@@ -65,7 +65,7 @@ constructor(private userService: UserService,
         }
         if (this.userService.checkTransaction(this.user, this.rulesList, transaction)) {
             transaction.approved = true;
-            setTimeout(() => this.toastr.success("Transaction Succesfull"));
+            setTimeout(() => this.toastr.success("Transaction Succesfull", "", {"positionClass": "toast-bottom-left"}));
         } else {
             transaction.approved = false;
             setTimeout(() => this.toastr.error("Transaction Denied"));

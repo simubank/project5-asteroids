@@ -11,14 +11,24 @@ body {
 }
 
 // Variables
-$orange: orange;
-$dark-blue: blue;
-$pink: pink;
-$yellow: yellow;
-$green: green;
-$purple: purple;
-$td-light-green: #7FB17F;
-$td-dark-green: #005A00;
+$orange: #F64F00; // food
+$light-purple: #663354; //entertainement
+$pink: #C9205E; // clothes
+$yellow: #ECAF5E; // groceries
+$green: #4D6A4F; // withdrawal
+$dark-purple: #3E1A52; // transportation
+$td-light-green: #54B948;
+$td-dark-green: #114831;
 $black: black;
 $white: white;
 $red: red;
+// Fonts
+@font-face {
+    font-family: bintang;
+    src: url(/assets/fonts/DKBintang.otf) format("opentype");
+}
+
+@font-face {
+    font-family: typewriter;
+    src: url(/assets/fonts/ATypewriterForMe.ttf) format("opentype");
+}

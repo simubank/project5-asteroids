@@ -5,7 +5,7 @@
 <!-- TODO: add 'remove child' form -->
 
 
-<div *ngIf="user !== undefined" class="container margin-top-40">
+<div *ngIf="user !== undefined" class="container whole-page margin-top-40">
     <div class="row">
         <div class="col">
             <h4>Balance:</h4>
@@ -32,7 +32,7 @@
     </div>
     <ng-container *ngIf="rulesList !== undefined && rulesList.length > 0">
         <div *ngFor="let key of rulesList" class="row">
-            <div [ngStyle]="{'background-color': getBgColor(user.rules[key].category)}" class="col rule-item">
+            <div [ngStyle]="returnStyle(user.rules[key].category)" class="col rule-item">
                 <div class="flex-rule flex-cat">
                     {{ user.rules[key].category }}
                 </div>
@@ -97,7 +97,7 @@
             <h4>Transactions</h4>
         </div>
     </div>
-    <ng-container *ngIf="transactionList !== undefined">
+    <ng-container class="transactionList" *ngIf="transactionList !== undefined">
         <div *ngFor="let key of transactionList | invert" class="row">
             <div class="col transaction" [ngStyle]="{ 'border-color': (user.transactions[key].approved ? 'green' : 'red')}">
                 <div class="flex-cat">

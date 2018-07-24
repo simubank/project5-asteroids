@@ -95,20 +95,20 @@ export class ControlPanelComponent implements OnInit {
         this.userService.deleteRule(this.user, key);
     }
 
-    getBgColor(category: string) {
+    returnStyle(category: string): Object {
         switch (category) {
             case 'food':
-                return 'orange';
+                return { 'background-color': '#F64F00', 'color': 'black' };
             case 'transportation':
-                return 'blue';
+                return { 'background-color': '#3E1A52', 'color': 'white' };
             case 'clothes':
-                return 'pink';
+                return { 'background-color': '#C9205E', 'color': 'black' };
             case 'entertainment':
-                return 'purple';
+                return { 'background-color': '#663354', 'color': 'white' };
             case 'groceries':
-                return 'yellow';
+                return { 'background-color': '#ECAF5E', 'color': 'black' };
             case 'withdrawal':
-                return 'green';
+                return { 'background-color': '#4D6A4F', 'color': 'black' };
             default:
                 return 'white';
         }
