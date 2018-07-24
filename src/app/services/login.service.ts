@@ -34,6 +34,10 @@ export class LoginService {
                 }
             });
         }
+        // if (login === 'Galen Nevius') {
+        //     this._login.next(login);
+        //     return true;
+        // }
         return false;
 
     }

@@ -68,7 +68,7 @@ constructor(private userService: UserService,
             setTimeout(() => this.toastr.success("Transaction Succesfull", "", {"positionClass": "toast-bottom-left"}));
         } else {
             transaction.approved = false;
-            setTimeout(() => this.toastr.error("Transaction Denied"));
+            setTimeout(() => this.toastr.error("Transaction Denied", "", {"positionClass": "toast-bottom-left"}));
         }
         this.userService.addTransaction(this.user, transaction);
     }

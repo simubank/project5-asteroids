@@ -10,4 +10,8 @@ import { Observable } from 'rxjs/Observable';
 })
 export class AppComponent {
     title = 'TD Generic Group Project Template';
+
+    constructor() {
+        localStorage.removeItem('firebase:previous_websocket_failure');
+    }
 }

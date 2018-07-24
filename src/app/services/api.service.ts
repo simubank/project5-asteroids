@@ -11,8 +11,13 @@ export class ApiService {
     constructor(private http: Http) { }
 
     public get(url: string): any {
-        return this.http.get(url, {headers: this.getHeaders() })
+        return this.http.get(url, { headers: this.getHeaders() })
             .map((res: Response) => res.json());
+    }
+
+    public post(url: string, payload: any) {
+        return this.http.post(url, payload, {headers: this.getHeaders() })
+        .map((res: Response) => res.json());
     }
 
     private getHeaders(): Headers {
