@@ -1,0 +1,123 @@
+<!-- TODO: Move all this to rule management page and do this instead: -->
+<!-- TODO: Display all user's children -->
+<!-- TODO: add 'log off' button -->
+<!-- TODO: add 'register child' form -->
+<!-- TODO: add 'remove child' form -->
+
+
+<div *ngIf="user !== undefined" class="container whole-page margin-top-40">
+    <div class="row">
+        <div class="col">
+            <h4>Balance:</h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <h1 class="display-3">${{ user.balance | number: '1.2-2' }}</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-7">
+            <input type="number" [(ngModel)]="newBalance">
+        </div>
+        <div class="col-5">
+            <button (click)="setBalance(newBalance)" type="button" class="btn btn-success">Set New Limit</button>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col">
+            <h4>Active Rules</h4>
+        </div>
+    </div>
+    <ng-container *ngIf="rulesList !== undefined && rulesList.length > 0">
+        <div *ngFor="let key of rulesList" class="row">
+            <div [ngStyle]="returnStyle(user.rules[key].category)" class="col rule-item">
+                <div class="flex-rule flex-cat">
+                    {{ user.rules[key].category }}
+                </div>
+                <div class="flex-rule flex-allow  margin-bottom-10">
+                    {{ user.rules[key].allowed ? 'Allowed' : 'Not Allowed'}}
+                </div>
+                <div *ngIf="user.rules[key].allowed" class="flex-rule rule-limit">
+                    ${{ user.rules[key].limit | number: '1.2-2' }}
+                </div>
+                <div class="flex-rule last-item">
+                    <i (click)="deleteRule(key)" class="fa clickable fa-trash-o"></i>
+                </div>
+            </div>
+        </div>
+    </ng-container>
+    <div class="row">
+        <div class="col">
+            <h4>New Rule</h4>
+        </div>
+    </div>
+    <form (ngSubmit)="createRule()" #newRuleForm="ngForm">
+        <div class="row">
+            <div class="col new-rule">
+                <div>
+                    <label for="newRuleCategory">Category</label>
+                    <br>
+                    <select name="newRuleCategory" id="newRuleCategory" [(ngModel)]="newRuleCategory" required>
+                        <option value="select" disabled selected hidden></option>
+                        <option value="clothes">Clothes</option>
+                        <option value="entertainment">Entertainment</option>
+                        <option value="food">Food</option>
+                        <option value="groceries">Groceries</option>
+                        <option value="transportation">Transportation</option>
+                        <option value="withdrawal">Withdrawal</option>
+                    </select>
+                </div>
+                <div class="last-item">
+                    <label for="newRuleAllowed">Allowed?</label>
+                    <br>
+                    <select name="newRuleAllowed" id="newRuleAllowed" [(ngModel)]="newRuleAllowed" required>
+                        <option value="select" disabled selected hidden></option>
+                        <option value="true">Yes</option>
+                        <option value="false">No</option>
+                    </select>
+                </div>
+                <div>
+                    <div *ngIf="newRuleAllowed === 'true'">
+                        <label for="newRuleLimit">Limit</label>
+                        <br>
+                        <input type="number" name="newRuleLimit" [(ngModel)]="newRuleLimit">
+                    </div>
+                </div>
+                <div class="last-item">
+                    <button type="submit" class="btn btn-success" [disabled]="!newRuleForm.form.valid">Create Rule</button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <hr>
+    <div class="row">
+        <div class="col">
+            <h4>Transactions</h4>
+        </div>
+    </div>
+    <ng-container class="transactionList" *ngIf="transactionList !== undefined">
+        <div *ngFor="let key of transactionList | invert" class="row">
+            <div class="col transaction" [ngStyle]="{ 'border-color': (user.transactions[key].approved ? 'green' : 'red')}">
+                <div class="flex-cat">
+                    {{ user.transactions[key].category }}
+                </div>
+                <div class="flex-transaction flex-merchant">
+                    {{ user.transactions[key].merchant }}
+                </div>
+                <div class="flex-transaction flex-amount">
+                    ${{ user.transactions[key].amount }}
+                </div>
+                <div class="flex-transaction flex-approved">
+                    <i *ngIf="user.transactions[key].approved" class="fa fa-check"></i>
+                    <i *ngIf="!user.transactions[key].approved" class="fa fa-times"></i>
+                </div>
+            </div>
+        </div>
+    </ng-container>
+</div>
+<!-- TODO: Display latest transactions for child -->
+<!-- TODO: Display current maximum allowance -->
+<!-- TODO: Display current rules (with option to delete and edit) -->
+<!-- TODO: Display button for adding new rule -->

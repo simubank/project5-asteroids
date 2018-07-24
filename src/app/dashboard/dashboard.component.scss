@@ -1,0 +1,131 @@
+@import "../../styles.scss";
+.young-guy {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 100%;
+}
+
+.top-right {
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 84%;
+    width: 82%;
+    display: flex;
+}
+
+.transactions {
+    right: 0;
+    top: 0;
+    flex: 1 1 22%;
+}
+
+.transactions-border {
+    width: 100%;
+    height: auto;
+    z-index: 10;
+}
+
+.transactions-list {
+    width: 68%;
+    margin-left: auto;
+    margin-right: auto;
+    height: 40%;
+    position: relative;
+    bottom: 69%;
+    z-index: 1; // display: flex;
+    flex-direction: row;
+    overflow: hidden;
+}
+
+.transaction-item {
+    margin-left: 2px;
+    margin-right: 2px;
+}
+
+.transaction-cat {
+    flex: 1 1 30%;
+}
+
+.transaction-merchant {
+    flex: 1 1 20%;
+}
+
+.transaction-amount {
+    flex: 1 1 10%;
+}
+
+.purchase-buttons {
+    flex: 1 1 69%;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+}
+
+.purchase-button {
+    flex: 1 1 33%;
+    img {
+        width: 100%;
+        height: auto;
+        cursor: pointer;
+    }
+}
+
+.logo {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 40%;
+    height: auto;
+}
+
+.user-name {
+    position: relative;
+    bottom: 51%;
+    font-family: 'bintang', 'arial', sans-serif;
+    font-size: 2em;
+    z-index: 10;
+}
+
+.balance {
+    position: relative;
+    bottom: 16%;
+    font-family: 'bintang', 'arial', sans-serif;
+    font-size: 1.5em;
+    z-index: 10;
+    hr {
+        margin: 2px;
+        border: 1px solid $yellow;
+        width: 50%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+.list {
+    display: flex;
+    font-family: 'typewriter';
+    font-size: 0.5em;
+}
+
+.last-item {
+    margin-left: auto;
+    margin-right: 3px;
+}
+
+.fa-check {
+    color: $td-light-green;
+}
+
+.fa-times {
+    color: $red;
+}
+
+.purchase-button {
+    img.money-btn {
+        width: 230px;
+        margin-top: 8%;
+    }
+}

@@ -4,7 +4,7 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --proxy-config proxy.config.json",
     "build": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
@@ -26,6 +26,8 @@
     "bootstrap": "^4.1.1",
     "core-js": "^2.4.1",
     "firebase": "^5.2.0",
+    "font-awesome": "^4.7.0",
+    "ngx-toastr": "^8.9.1",
     "rxjs": "^6.2.1",
     "rxjs-compat": "^6.2.1",
     "zone.js": "^0.8.19"

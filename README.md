@@ -18,7 +18,7 @@ install typescript:
 in git bash (or other terminal):  
 ```git clone git@github.com:simubank/project5-asteroids.git```  
 change to Development branch:  
-```git checkout Development```
+```git checkout development```
 
 ### Install Dependencies
 navigate to td-generic-group-project/ folder  
@@ -28,7 +28,7 @@ install dependencies:
 
 ### Run the app locally
 run the website:  
-```ng serve```  
+```npm start```  
 
 Navigate to http://localhost:4200/.  
 The app will automatically reload if you change any of the source files.  
@@ -49,11 +49,9 @@ Navigate to http://localhost:5000
 
 ### Start deployment
 ```firebase init```
+* Select __yes__ to proceed
+* Select Hosting only
 * Select the project
-* Use default Database Rules
-* Overwrite it
-* Overwrite package.json
-* Overwrite index.js
 * Install dependencies (once)
 * Choose "dist" folder
 * Choose __yes__ to configure as a single-page app
@@ -62,6 +60,8 @@ Navigate to http://localhost:5000
 
 ### Deploy!
 ```firebase deploy```
+
+connect to ```https://td-generic-group-project.firebaseapp.com```
 
 [git bash]: https://git-scm.com/downloads  
 [node]: https://nodejs.org/en/  

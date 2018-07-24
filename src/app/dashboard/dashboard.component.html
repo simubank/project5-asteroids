@@ -1,0 +1,130 @@
+<div *ngIf="user !== undefined" class="container">
+    <img class="young-guy" src="../../assets/img/young-guy.jpg" alt="young-guy">
+    <div class="top-right">
+        <div class="transactions text-center">
+            <img class="transactions-border" src="../../assets/img/transactions-border.png" alt="transactions">
+            <div class="balance text-center">
+                balance
+                <hr> ${{ user.balance | number: '1.2-2' }}
+            </div>
+            <div class="transactions-list">
+                <ng-container *ngIf="transactionList !== undefined">
+                    <div *ngFor="let key of transactionList | invert" class="list">
+                        <div class="transaction-item transaction-cat">
+                            {{ user.transactions[key].category }}
+                        </div>
+                        <div class="transaction-item transaction-merchant">
+                            {{ user.transactions[key].merchant }}
+                        </div>
+                        <div class="transaction-item transaction-amount">
+                            ${{ user.transactions[key].amount | number: '1.2-2' }}
+                        </div>
+                        <div class="transaction-item last-item">
+                            <i *ngIf="user.transactions[key].approved" class="fa fa-check"></i>
+                            <i *ngIf="!user.transactions[key].approved" class="fa fa-times"></i>
+                        </div>
+                    </div>
+                </ng-container>
+            </div>
+            <div class="user-name text-center">{{ user.fullName }}</div>
+        </div>
+        <div class="purchase-buttons">
+            <div class="purchase-button">
+                <img (click)="makePurchase('coffee', 5, 'Tims', 'food')" src="../../assets/img/food-button.jpg" alt="food-button">
+            </div>
+            <div class="purchase-button">
+                <img (click)="makePurchase('train ticket', 20, 'Presto', 'transportation')" src="../../assets/img/transportation-button.jpg" alt="transportation-button">
+            </div>
+            <div class="purchase-button">
+                <img (click)="makePurchase('pants', 100, 'Guess', 'clothes')" src="../../assets/img/clothes-button.jpg" alt="clothes-button">
+            </div>
+            <div class="purchase-button">
+                <img (click)="makePurchase('food', 50, 'Walmart', 'groceries')" src="../../assets/img/groceries-button.jpg" alt="groceries-button">
+            </div>
+            <div class="purchase-button">
+                <img (click)="makePurchase('movie ticket', 25, 'Cinemax', 'entertainment')" src="../../assets/img/entertainment-button.jpg" alt="entertainment-button">
+            </div>
+            <div class="purchase-button">
+                <img (click)="makePurchase('ATM', 25, 'TD ATM', 'withdrawal')" class="money-btn" src="../../assets/img/money-button.jpg" alt="money-button">
+            </div>
+        </div>
+    </div>
+    <img class="logo" src="../../assets/img/logo.png" alt="td-allowance-logo">
+    <!-- <div class="row">
+        <div class="col">
+            {{ user.fullName }}
+        </div>
+        <div class="col">
+            ${{ user.balance | number: '1.2-2' }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="col">
+                <button (click)="makePurchase('coffee', 5, 'Tims', 'food')" type="button" class="btn btn-danger">$10 Coffee</button>
+            </div>
+        </div>
+        <div class="col">
+            <div class="col">
+                <button (click)="makePurchase('food', 50, 'Walmart', 'groceries')" type="button" class="btn btn-danger">walmart</button>
+            </div>
+        </div>
+        <div class="col">
+            <div class="col">
+                <button (click)="makePurchase('ATM', 25, 'TD ATM', 'withdrawal')" type="button" class="btn btn-danger">atm</button>
+            </div>
+        </div>
+        <div class="col">
+            <div class="col">
+                <button (click)="makePurchase('pants', 100, 'Guess', 'clothes')" type="button" class="btn btn-primary">$100 Pants</button>
+            </div>
+        </div>
+        <div class="col">
+            <div class="col">
+                <button (click)="makePurchase('train ticket', 20, 'Presto', 'transportation')" type="button" class="btn btn-secondary">$20 Train Ticket</button>
+            </div>
+        </div>
+        <div class="col">
+            <div class="col">
+                <button (click)="makePurchase('movie ticket', 25, 'Cinemax', 'entertainment')" type="button" class="btn btn-warning">$30 Movie Ticket</button>
+            </div>
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col">
+            type
+        </div>
+        <div class="col">
+            description
+        </div>
+        <div class="col">
+            amount
+        </div>
+        <div class="col">
+            merchant
+        </div>
+        <div class="col">
+            approved?
+        </div>
+    </div>
+    <ng-container *ngIf="transactionList !== undefined">
+        <div *ngFor="let key of transactionList | invert" class="row">
+            <div class="col">
+                {{ user.transactions[key].category }}
+            </div>
+            <div class="col">
+                {{ user.transactions[key].description }}
+            </div>
+            <div class="col">
+                {{ user.transactions[key].amount }}
+            </div>
+            <div class="col">
+                {{ user.transactions[key].merchant }}
+            </div>
+            <div class="col">
+                {{ user.transactions[key].approved ? 'Approved' : 'Denied' }}
+            </div>
+        </div>
+    </ng-container> -->
+</div>

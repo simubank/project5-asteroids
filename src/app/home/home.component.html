@@ -1,7 +1,31 @@
 <div class="container">
-    <div *ngFor="let item of testArray | async"  class="row">
-        <div class="col-xs-12">
-            {{ item.number }}
+    <div class="row">
+        <div class="col text-center">
+            <img class="logo" src="../../assets/img/logo.png" alt="td-alowance-logo">
         </div>
     </div>
+    <div class="row">
+        <form class="form" (ngSubmit)="loginFunction()" #loginForm="ngForm">
+            <div class="col">
+                <div class="form-group">
+                    <label for="userName">Login</label>
+                    <input [(ngModel)]="userName" type="text" class="form-control" id="userName" name="userName" required>
+                </div>
+            </div>
+            <div class="col text-center">
+                <button type="submit" class="btn btn-success" [disabled]="!loginForm.form.valid">Log In</button>
+            </div>
+        </form>
+    </div>
+    <!-- <div class="row">
+        The user names (They are secret!):
+    </div>
+    <div *ngFor="let user of userList" class="row">
+        {{ user.fullName }}
+    </div> -->
+    <!-- <div class="row">
+        <div class="col-xs-12">
+            <button (click)="setCustomer()" type="button" class="btn btn-primary">Set Customer</button>
+        </div>
+    </div> -->
 </div>
