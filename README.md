@@ -61,7 +61,7 @@ Navigate to http://localhost:5000
 ### Deploy!
 ```firebase deploy```
 
-connect to ``` https://td-generic-group-project.firebaseapp.com```
+connect to ```https://td-generic-group-project.firebaseapp.com```
 
 [git bash]: https://git-scm.com/downloads  
 [node]: https://nodejs.org/en/  
