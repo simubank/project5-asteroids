@@ -1,3 +1,4 @@
+import { TransactionsService } from './transactions.service';
 import { Transaction } from './../class/transaction';
 import { User } from './../class/user';
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
@@ -10,7 +11,8 @@ export class UserService {
 
 
 
-    constructor(private db: AngularFireDatabase) {
+    constructor(private db: AngularFireDatabase,
+    private transactionsService: TransactionsService) {
         this.userList = this.db.list('/users');
     }
 
@@ -33,6 +35,9 @@ export class UserService {
     addTransaction(user: User, transaction: Transaction) {
         let transactionList = this.db.list('/users/' + user.$key + '/transactions');
         transactionList.push(transaction);
+        if (transaction.approved) {
+            this.transactionsService.makeTransaction(user.accountId, transaction.amount, transaction.merchant, transaction.category);
+        }
         // let rulesList = this.db.list('/users/' + user.$key + '/rules');
         // rulesList.push({
         //     category: 'coffee',

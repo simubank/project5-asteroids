@@ -33,7 +33,7 @@
     margin-right: auto;
     height: 40%;
     position: relative;
-    bottom: 69%;
+    bottom: 66%;
     z-index: 1; // display: flex;
     flex-direction: row;
     overflow: hidden;
@@ -107,7 +107,7 @@
 .list {
     display: flex;
     font-family: 'typewriter';
-    font-size: 0.5em;
+    font-size: 0.8em;
 }
 
 .last-item {
@@ -125,7 +125,7 @@
 
 .purchase-button {
     img.money-btn {
-        width: 230px;
+        width: 305px;
         margin-top: 8%;
     }
 }
